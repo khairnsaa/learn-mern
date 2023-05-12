@@ -1,0 +1,31 @@
+{
+  "name": "thieveshop",
+  "version": "1.0.0",
+  "description": "shop for the thieves",
+  "main": "server.js",
+  "type": "module",
+  "devDependencies": {},
+  "scripts": {
+    "start": "node backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khairnsaa/learn-mern.git"
+  },
+  "author": "NiSAAS",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/khairnsaa/learn-mern/issues"
+  },
+  "homepage": "https://github.com/khairnsaa/learn-mern#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.1.1",
+    "multer": "^1.4.5-lts.1"
+  }
+}
