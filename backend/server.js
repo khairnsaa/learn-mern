@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 import connectDB from "./config/db.js";
 import productRoutes from "./routes/productRoutes.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
@@ -20,6 +21,15 @@ app.use((req, res, next) => {
 app.get("/", (req, res) => {
   res.send("HELLLOOO");
 });
+
+app.use(
+  cors({
+    methods: "GET,POST,PATCH,DELETE,OPTIONS",
+    optionsSuccessStatus: 200,
+    origin: "http://localhost:5173",
+  })
+);
+app.options("*", cors());
 
 app.use("/api/products", productRoutes);
 app.use(notFound);

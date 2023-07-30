@@ -1,30 +1,27 @@
-import React, { useEffect, useState } from "react";
-import { Col, Row } from "react-bootstrap";
-// import products from '../products'
+import { Col, Row, Spinner } from "react-bootstrap";
 import Product from "../components/Product";
-import axios from "axios";
+import { useGetProductsQuery } from "../slices/productsApiSlice";
 
 const HomeScreens = () => {
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    const fetchProduct = async () => {
-      const { data } = await axios.get("/api/products");
-      setProducts(data);
-    };
-    fetchProduct();
-    // axios.get("/api/products").then((result) => setProducts(result.data));
-  }, []);
-
+  const { data: products, isFetching } = useGetProductsQuery();
   return (
     <>
-      <h1>Latest Products</h1>
-      <Row>
-        {products.map((product) => (
-          <Col sm={12} md={6} lg={4} xl={3} key={product._id}>
-            <Product product={product} />
-          </Col>
-        ))}
-      </Row>
+      {isFetching ? (
+        <Spinner animation="border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      ) : (
+        <>
+          <h1>Latest Products</h1>
+          <Row>
+            {products?.map((product) => (
+              <Col sm={12} md={6} lg={4} xl={3} key={product._id}>
+                <Product product={product} />
+              </Col>
+            ))}
+          </Row>
+        </>
+      )}
     </>
   );
 };
