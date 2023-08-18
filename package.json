@@ -10,7 +10,7 @@
     "nodemon": "^2.0.22"
   },
   "scripts": {
-    "client": "cd frontend && yarn start",
+    "client": "yarn start --prefix frontend",
     "server": "nodemon backend/server.js",
     "data:import": "node backend/seeder.js",
     "data:destroy": "node backend/seeder.js -d",
